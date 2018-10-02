@@ -46,7 +46,7 @@
 
 		.dropdown:hover .dropdown-content {display: block;}
 
-		.dropdown:hover .dropbtn {background-color: #7c62ad;}
+		.dropdown:hover .dropbtn {background-color: darkblue;}
 		.sub-dropdown-content {
 			display: none;
 			position: relative;
@@ -81,18 +81,21 @@
 </head>
 <body>
 <header>
-	<div id="google_translate_element"></div>
-	<nav class="navbar navbar-default navbar-static-top" role="navigation">
-		<div class="navigation">
-			<div class="container">
-				<div class="navbar-header">
+	<div id="google_translate_element" style="height:10%"></div>
+	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="background: #71a4f8;">
+		<div class="navigation" style="background: #71a4f8;">
+			<div class="container" >
+				<div class="navbar-header" style="padding-bottom:10%">
 					<div class="navbar-brand">
-						<a href="{{url('/')}}"><img height="60" width="90" src="{{url('/front/ESH.jpg')}}">
-							<h1><span>E</span>verest</h1></a>
+						<a class="pull-right" href="{{url('/')}}"><img height="130" width="130" style="margin-bottom:-30px;" src="{{url('/front/ESH.jpg')}}"></a>
+					</div>
+					<div class="navbar-brand" style="margin-left:16%">
+						<a class="pull-right" href="{{url('/')}}">
+							<h2 style="color:darkblue" class="pull-right"><span>E</span>verest Souvenir House</h2></a>
 					</div>
 				</div>
 
-					<div class="menu">
+					<div class="menu" style="padding-bottom: 25px;">
 						<ul class="nav nav-tabs" role="tablist">
 							<li class="dropdown" role="presentation"><a href="{{url('/')}}" @if(Request::segment(1) == '')class="active" @endif>Home</a></li>
 							<li class="dropdown" role="presentation"><a href="{{url('/aboutus')}}" @if(Request::segment(1) == 'services')class="active" @endif>About Us</a></li>
