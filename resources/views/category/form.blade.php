@@ -3,6 +3,10 @@
 		        	<input type="text" class="form-control" name="title" id="title">
 	        	</div>
 				<div class="form-group">
+		        	<label for="title">Full Title</label>
+		        	<input type="text" class="form-control" name="full_title" id="title">
+	        	</div>
+				<div class="form-group">
 					<label for="cat_id">Parent Category</label>
 					<select id="cat_id" name="cat_id" class="form-control" size="1">
 						<option value="0">Select Categories</option>

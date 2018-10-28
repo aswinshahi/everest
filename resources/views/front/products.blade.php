@@ -5,7 +5,7 @@
         <div class="container" style="text-align: center">
         <!-- stuff -->
             <?php $category = \App\Category::where('id',$id)->first();?>
-        <h2 style="color: black">{{$category->title}}</h2>
+        <h2 style="color: black">{{$category->full_title}}</h2>
     </div>
         <hr>
             <div class="container">
