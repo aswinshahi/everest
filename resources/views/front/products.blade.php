@@ -2,10 +2,12 @@
 
 @section('content')
 	@if(count($product_codes)>0)
-        <div class="box">
+        <div class="container" style="text-align: center">
         <!-- stuff -->
-        <p class="bet_time">Bet 5 days ago</p>
+            <?php $category = \App\Category::where('id',$id)->first();?>
+        <h2 style="color: black">{{$category->title}}</h2>
     </div>
+        <hr>
             <div class="container">
         @foreach($product_codes as $product_code)
             <?php $products = \App\Product::where('product_code',$product_code)->where('cat_id',$id)->get();?>

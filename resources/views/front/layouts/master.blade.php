@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Everest Souveneir</title>
+	<title>Everest Souvenir House</title>
 
 	<!-- Bootstrap -->
 
@@ -46,7 +46,7 @@
 
 		.dropdown:hover .dropdown-content {display: block;}
 
-		.dropdown:hover .dropbtn {background-color: darkblue;}
+		.dropdown:hover .dropbtn {background-color: white;}
 		.sub-dropdown-content {
 			display: none;
 			position: relative;
@@ -81,17 +81,17 @@
 </head>
 <body>
 <header>
-	<div id="google_translate_element" style="height:10%"></div>
-	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="background: #71a4f8;">
-		<div class="navigation" style="background: #71a4f8;">
+	{{--<div id="google_translate_element" style="height:15%"></div>--}}
+	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="background: burlywood;">
+		<div class="navigation" style="background: burlywood;">
 			<div class="container" >
 				<div class="navbar-header" style="padding-bottom:10%">
 					<div class="navbar-brand">
-						<a class="pull-right" href="{{url('/')}}"><img height="130" width="130" style="margin-bottom:-30px;" src="{{url('/front/ESH.jpg')}}"></a>
+						<a class="pull-right" href="{{url('/')}}"><img height="130" width="140" style="margin-bottom:-30px;" src="{{url('/front/ESH1.jpg')}}"></a>
 					</div>
 					<div class="navbar-brand" style="margin-left:16%">
 						<a class="pull-right" href="{{url('/')}}">
-							<h2 style="color:darkblue" class="pull-right"><span>E</span>verest Souvenir House</h2></a>
+							<h3 style="color:darkblue;font-weight: 700" class="pull-right"><span>E</span>verest Souvenir House</h3></a>
 					</div>
 				</div>
 
@@ -103,13 +103,13 @@
 								<a class="dropbtn" id="product-link" href="#" @if(Request::segment(1) == 'contact')class="active" @endif>
 									Product
 								</a>
-								<div class="dropdown-content">
+								<div class="dropdown-content" style="width: 150%;">
                                     <?php $categories = \App\Category::where('cat_id',0)->get();
                                     $cat_ids = \App\Category::pluck('cat_id')->toarray();
                                     ?>
 									@foreach($categories as $key=>$cat)
-										<a class="subdropdown" data-id="{{$cat->id}}" @if(in_array($cat->id, $cat_ids)) href="javascript:void(0)" @else href="{{url('/products/'.$cat->id)}}" @endif>{{$cat->title}}@if(in_array($cat->id, $cat_ids))<span class="fa fa-plus pull-right"></span>@endif</a>
-										<div  class="sub-dropdown-content-{{$cat->id}} sub-dropdown-content" style="position: absolute; left: 161px; top: <?php echo $key * 6 + 2; ?>%;">
+										<a class="subdropdown" data-id="{{$cat->id}}" @if(in_array($cat->id, $cat_ids)) href="javascript:void(0)" @else href="{{url('/products/'.$cat->id)}}" @endif>{{$cat->title}}@if(in_array($cat->id, $cat_ids))<span class="fa fa-plus pull-right" style="margin-top: 5%;"></span>@endif</a>
+										<div  class="sub-dropdown-content-{{$cat->id}} sub-dropdown-content" style="position: absolute; left: 175px; top: <?php echo $key * 6 ; ?>%;">
                                             <?php $subcategories = \App\Category::where('cat_id',$cat->id)->get(); ?>
 											@foreach($subcategories as $subcat)
 												<a href="{{url('/products/'.$subcat->id)}}">{{$subcat->title}}</a>
@@ -134,21 +134,28 @@
 			<div class="col-md-4 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.6s">
 				<h3>CONTACT INFO</h3>
 				<ul>
-					<li><i class="fa fa-home fa-2x"></i> Office # 38, Suite 54 Elizebth Street, Victoria State Newyork, USA 33026</li><hr>
-					<li><i class="fa fa-phone fa-2x"></i> +38 000 129900</li><hr>
-					<li><i class="fa fa-envelope fa-2x"></i> info@domain.net</li>
+					<li><i class="fa fa-home fa-2x"></i>#Office {{$settings->address}}</li><hr>
+					<li><i class="fa fa-phone fa-2x"></i> {{$settings->mobile_number}}</li><hr>
+					<li><i class="fa fa-phone fa-2x"></i> {{$settings->contact_number}}</li><hr>
+					<li><i class="fa fa-envelope fa-2x"></i> {{$settings->email}}</li>
 				</ul>
 			</div>
-
+			<div class="col-md-4 wow fadeInUp pull-right" data-wow-offset="0" data-wow-delay="0.6s">
+				<h3>Connect us with</h3>
+				<ul>
+					<li>Viber , whatsapp, wechat with  {{$settings->mobile_number}}</li><hr>
+					<li>WE CHAT scanner code<img height="130" width="140" style="margin-bottom:-30px;" src="{{url('/front/qr.jpg')}}"></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 
 	<div class="sub-footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6">
-					&copy; 2015 <a target="_blank" href="http://bootstraptaste.com/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">bootstraptaste</a>. All Rights Reserved.
-				</div>
+				{{--<div class="col-md-6">--}}
+					{{--&copy; 2015 <a target="_blank" href="http://bootstraptaste.com/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">bootstraptaste</a>. All Rights Reserved.--}}
+				{{--</div>--}}
 				<!--
                     All links in the footer should remain intact.
                     Licenseing information is available at: http://bootstraptaste.com/license/
@@ -218,7 +225,7 @@
 </script>
 <script>
     $("#product-link").click(function(){
-        $('.subdropdown').show();
+        $("#product-link").addClass('hover');
 	});
 </script>
 <script type="text/javascript">
@@ -235,6 +242,8 @@
         }
     });
 </script>
+<?php $settings = \App\Setting::first();
 
+?>
 </body>
 </html>
